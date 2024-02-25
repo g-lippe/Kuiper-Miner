@@ -23,6 +23,8 @@ var input_mouse: Vector2
 var health:int = 100
 var gravity := 0.0
 
+var push_force = 5.0
+
 var previously_floored := false
 
 var jump_single := true
@@ -70,6 +72,12 @@ func _physics_process(delta):
 	
 	velocity = applied_velocity
 	move_and_slide()
+	
+	# Handle Rigid Body Collisions
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 	
 	# Rotation
 	

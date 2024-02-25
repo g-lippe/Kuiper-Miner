@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwffsn7x5rhr7"]
+[gd_scene load_steps=11 format=3 uid="uid://bwffsn7x5rhr7"]
 
 [ext_resource type="PackedScene" uid="uid://bvx5cvigosg0s" path="res://objects/platform_large_grass.tscn" id="1_1qknk"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="1_a0c1r"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bbatuj5n3uyfb" path="res://objects/platform_extra_large_grass.tscn" id="5_20vkm"]
 [ext_resource type="Resource" uid="uid://bfmwig8vs2c8u" path="res://weapons/rock-blaster.tres" id="5_nlaru"]
 [ext_resource type="Resource" uid="uid://m5h6017yq0vw" path="res://weapons/hands.tres" id="6_evikw"]
+[ext_resource type="PackedScene" uid="uid://h4di7a2vgdwo" path="res://objects/resource_bar.tscn" id="8_xioaj"]
+[ext_resource type="PackedScene" uid="uid://behy44fhibaag" path="res://objects/test_cube.tscn" id="9_noyqn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2abwv"]
 font = ExtResource("3_ti8fe")
@@ -71,3 +73,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.729, 2.95751, -15.2784)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74374, -1.19397, 15.8387)
 
 [node name="platform-large-grass2" parent="Level" instance=ExtResource("5_20vkm")]
+
+[node name="ResourceBar" parent="." instance=ExtResource("8_xioaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -3)
+
+[node name="Node3D" parent="." instance=ExtResource("9_noyqn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -1)
+
+[node name="ResourceBar2" parent="." instance=ExtResource("8_xioaj")]
+transform = Transform3D(0.955839, 0.29235, 0.0300464, -0.29389, 0.950831, 0.0977221, 0, -0.102237, 0.99476, -2.78616, 3.66376, -3.00984)
+
+[node name="ResourceBar3" parent="." instance=ExtResource("8_xioaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -3)
+
+[node name="ResourceBar4" parent="." instance=ExtResource("8_xioaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 6.425, -3)
+
+[node name="ResourceBar5" parent="." instance=ExtResource("8_xioaj")]
+transform = Transform3D(1, 0, 0, 0, 0.951116, 0.308834, 0, -0.308834, 0.951116, -3, 4.3717, -3)
+
+[node name="ResourceBar6" parent="." instance=ExtResource("8_xioaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74291, 5.32515, -3.06135)
+
+[node name="Node3D2" parent="." instance=ExtResource("9_noyqn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88643, 6.3452, -0.88807)

@@ -13,3 +13,6 @@ res://weapons/hands.tres
 res://objects/enemy.tscn
 res://scenes/space-enviroment.tres
 res://objects/player.tscn
+res://objects/resource_bar.tscn
+res://objects/test_cube.tscn
+res://objects/impact.tscn
