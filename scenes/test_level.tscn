@@ -94,6 +94,3 @@ transform = Transform3D(1, 0, 0, 0, 0.951116, 0.308834, 0, -0.308834, 0.951116, 
 
 [node name="ResourceBar6" parent="." instance=ExtResource("8_xioaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74291, 5.32515, -3.06135)
-
-[node name="Node3D2" parent="." instance=ExtResource("9_noyqn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88643, 6.3452, -0.88807)
