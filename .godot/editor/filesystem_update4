@@ -10,3 +10,6 @@ res://objects/platform_extra_large_grass.tscn
 res://weapons/rock-blaster.tres
 res://scripts/weapon.gd
 res://weapons/hands.tres
+res://objects/enemy.tscn
+res://scenes/space-enviroment.tres
+res://objects/player.tscn

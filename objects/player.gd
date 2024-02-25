@@ -166,7 +166,7 @@ func handle_controls(_delta):
 
 func handle_gravity(delta):
 	
-	gravity += 20 * delta
+	gravity += 15 * delta
 	
 	if gravity > 0 and is_on_floor():
 		
@@ -269,21 +269,21 @@ func change_weapon():
 	for n in container.get_children():
 		container.remove_child(n)
 	
-	# Step 2. Place new weapon model in container
+	# Step 2. If weapon has model, place new weapon model in container
 	
-	var weapon_model = weapon.model.instantiate()
-	container.add_child(weapon_model)
+	if weapon.model:
+		var weapon_model = weapon.model.instantiate()
+		container.add_child(weapon_model)
 	
-	weapon_model.position = weapon.position
-	weapon_model.rotation_degrees = weapon.rotation
+		weapon_model.position = weapon.position
+		weapon_model.rotation_degrees = weapon.rotation
 	
 	# Step 3. Set model to only render on layer 2 (the weapon camera)
+		for child in weapon_model.find_children("*", "MeshInstance3D"):
+			child.layers = 2
+			
 	
-	for child in weapon_model.find_children("*", "MeshInstance3D"):
-		child.layers = 2
-		
 	# Set weapon data
-	
 	raycast.target_position = Vector3(0, 0, -1) * weapon.max_distance
 	#crosshair.texture = weapon.crosshair
 
