@@ -1,4 +1,7 @@
 StaticBody3D
+Marker3D
+Generic6DOFJoint3D
+Node3D
 Area3D
 RigidBody3D
 CollisionShape3D

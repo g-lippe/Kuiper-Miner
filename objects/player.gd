@@ -10,6 +10,8 @@ extends CharacterBody3D
 var weapon: Weapon
 var weapon_index := 0
 
+var grabbedItem = null
+
 var mouse_sensitivity = 700
 var gamepad_sensitivity := 0.075
 
@@ -38,6 +40,7 @@ signal health_updated
 
 @onready var camera = $Head/Camera
 @onready var raycast = $Head/Camera/RayCast
+@onready var grabPoint = $Head/Camera/Marker3D/StaticBody3D/GrabPoint
 @onready var muzzle = $Head/Camera/SubViewportContainer/SubViewport/CameraItem/Muzzle
 @onready var container = $Head/Camera/SubViewportContainer/SubViewport/CameraItem/Container
 @onready var sound_footsteps = $SoundFootsteps
@@ -169,6 +172,9 @@ func handle_controls(_delta):
 	# Weapon switching
 	
 	action_weapon_toggle()
+	
+	action_grab()
+	action_reset()
 
 # Handle gravity
 
@@ -189,6 +195,37 @@ func action_jump():
 	
 	jump_single = false;
 	jump_double = true;
+
+# Grab
+
+func action_grab():
+	if Input.is_action_just_pressed("grab"):
+		
+		if grabbedItem:
+			grabbedItem = null
+			grabPoint.set_node_b("")
+		else: 
+			var collider = raycast.get_collider()
+			if collider and collider is RigidBody3D :
+	
+				if weapon_index >0:
+					Audio.play("sounds/weapon_change.ogg")
+					weapon_index = 0
+					initiate_change_weapon(weapon_index)
+					
+				print('Hit: ', collider)
+				
+				grabbedItem = collider.get_path()
+				grabPoint.set_node_b(grabbedItem)
+				
+				# Creating an impact animation
+				create_impact_effect()
+				
+	# Put object in hand
+	if Input.is_action_just_pressed("hold"):
+		if grabbedItem:
+			print('Hold in hand')
+			#collider.global_position = grabPoint.global_position
 
 # Shooting
 
@@ -233,27 +270,31 @@ func action_shoot():
 				collider.damage(weapon.damage)
 			
 			# Creating an impact animation
-			
-			var impact = preload("res://objects/impact.tscn")
-			var impact_instance = impact.instantiate()
-			
-			impact_instance.play("shot")
-			
-			get_tree().root.add_child(impact_instance)
-			
-			impact_instance.position = raycast.get_collision_point() + (raycast.get_collision_normal() / 10)
-			impact_instance.look_at(camera.global_transform.origin, Vector3.UP, true) 
+			create_impact_effect()
+
+
+func create_impact_effect():
+	var impact = preload("res://objects/impact.tscn")
+	var impact_instance = impact.instantiate()
+	
+	impact_instance.play("shot")
+	
+	get_tree().root.add_child(impact_instance)
+	
+	impact_instance.position = raycast.get_collision_point() + (raycast.get_collision_normal() / 10)
+	impact_instance.look_at(camera.global_transform.origin, Vector3.UP, true) 
+
 
 # Toggle between available weapons (listed in 'weapons')
 
 func action_weapon_toggle():
-	
-	if Input.is_action_just_pressed("weapon_toggle"):
-		
-		weapon_index = wrap(weapon_index + 1, 0, weapons.size())
-		initiate_change_weapon(weapon_index)
-		
-		Audio.play("sounds/weapon_change.ogg")
+		if Input.is_action_just_pressed("weapon_toggle"):
+			
+			if !grabbedItem:
+				weapon_index = wrap(weapon_index + 1, 0, weapons.size())
+				initiate_change_weapon(weapon_index)
+				Audio.play("sounds/weapon_change.ogg")
+
 
 # Initiates the weapon changing animation (tween)
 
@@ -302,3 +343,9 @@ func damage(amount):
 	
 	if health < 0:
 		get_tree().reload_current_scene() # Reset when out of health
+		
+		
+func action_reset():
+	if Input.is_action_just_pressed("reset_scene"):
+		get_tree().reload_current_scene() 
+	

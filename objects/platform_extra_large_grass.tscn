@@ -13,6 +13,8 @@ data = PackedVector3Array(2.5, 0.2, 2.3, 2.4, 0, 2.22, 2.355, 0, 2.355, 2.355, 0
 transform = Transform3D(6, 0, 0, 0, 0.989, 0, 0, 0, 6, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="platform-large-grass2" index="0"]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="platform-large-grass2/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_k56ha")

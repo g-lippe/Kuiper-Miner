@@ -6,8 +6,8 @@
 size = Vector3(0.999149, 0.226212, 0.553772)
 
 [node name="ResourceBar" type="RigidBody3D"]
-collision_layer = 2
-collision_mask = 3
+collision_layer = 4
+collision_mask = 7
 mass = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
