@@ -1,0 +1,12 @@
+res://scenes/main.tscn
+res://scenes/main-environment.tres
+res://sprites/burst_animation.tres
+res://scenes/test_level.tscn
+res://objects/platform_large_grass.tscn
+res://weapons/blaster-repeater.tres
+res://weapons/blaster.tres
+res://objects/player.gd
+res://objects/platform_extra_large_grass.tscn
+res://weapons/rock-blaster.tres
+res://scripts/weapon.gd
+res://weapons/hands.tres

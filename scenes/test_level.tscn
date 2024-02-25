@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwffsn7x5rhr7"]
+
+[ext_resource type="PackedScene" uid="uid://bvx5cvigosg0s" path="res://objects/platform_large_grass.tscn" id="1_1qknk"]
+[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="1_a0c1r"]
+[ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_tw35q"]
+[ext_resource type="FontFile" uid="uid://biqtga8moh7ah" path="res://fonts/lilita_one_regular.ttf" id="3_ti8fe"]
+[ext_resource type="Resource" uid="uid://c56y8pqoyk15f" path="res://weapons/blaster.tres" id="3_xd3su"]
+[ext_resource type="Resource" uid="uid://cu2gtxlcmbb34" path="res://weapons/blaster-repeater.tres" id="4_7h5k4"]
+[ext_resource type="PackedScene" uid="uid://bbatuj5n3uyfb" path="res://objects/platform_extra_large_grass.tscn" id="5_20vkm"]
+[ext_resource type="Resource" uid="uid://bfmwig8vs2c8u" path="res://weapons/rock-blaster.tres" id="5_nlaru"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2abwv"]
+font = ExtResource("3_ti8fe")
+font_size = 36
+outline_size = 12
+outline_color = Color(0, 0, 0, 0.470588)
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.422618, -0.694272, 0.582564, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_tw35q")
+
+[node name="Player" parent="." instance=ExtResource("1_a0c1r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.340738, 3.95016, -0.517486)
+weapons = Array[Resource("res://scripts/weapon.gd")]([ExtResource("3_xd3su"), ExtResource("4_7h5k4"), ExtResource("5_nlaru")])
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Crosshair" type="TextureRect" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(64, 64)
+
+[node name="Health" type="Label" parent="HUD"]
+offset_left = 48.0
+offset_top = 627.0
+offset_right = 138.0
+offset_bottom = 672.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "100%"
+label_settings = SubResource("LabelSettings_2abwv")
+vertical_alignment = 2
+
+[node name="Level" type="Node" parent="."]
+
+[node name="platform-large-grass" parent="Level" instance=ExtResource("1_1qknk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 9)
+
+[node name="platform-large-grass" parent="Level/platform-large-grass" instance=ExtResource("1_1qknk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.729, 2.95751, -15.2784)
+
+[node name="platform-large-grass" parent="Level/platform-large-grass/platform-large-grass" instance=ExtResource("1_1qknk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74374, -1.19397, 15.8387)
+
+[node name="platform-large-grass2" parent="Level" instance=ExtResource("5_20vkm")]
