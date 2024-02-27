@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwffsn7x5rhr7"]
+[gd_scene load_steps=12 format=3 uid="uid://bwffsn7x5rhr7"]
 
 [ext_resource type="PackedScene" uid="uid://bvx5cvigosg0s" path="res://objects/platform_large_grass.tscn" id="1_1qknk"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="1_a0c1r"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://m5h6017yq0vw" path="res://weapons/hands.tres" id="6_evikw"]
 [ext_resource type="PackedScene" uid="uid://h4di7a2vgdwo" path="res://objects/resource_bar.tscn" id="8_xioaj"]
 [ext_resource type="PackedScene" uid="uid://behy44fhibaag" path="res://objects/test_cube.tscn" id="9_noyqn"]
+[ext_resource type="PackedScene" uid="uid://ble1847n63ie5" path="res://scenes/Base.tscn" id="10_bq62x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2abwv"]
 font = ExtResource("3_ti8fe")
@@ -94,3 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 0.951116, 0.308834, 0, -0.308834, 0.951116, 
 
 [node name="ResourceBar6" parent="." instance=ExtResource("8_xioaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74291, 5.32515, -3.06135)
+
+[node name="Node3D2" parent="." instance=ExtResource("10_bq62x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31)

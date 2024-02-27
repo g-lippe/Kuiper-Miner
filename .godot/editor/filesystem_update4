@@ -1,4 +1,4 @@
-res://scenes/test_level.tscn
+res://scenes/main.tscn
 res://scenes/main-environment.tres
 res://weapons/blaster-repeater.tres
 res://weapons/blaster.tres
@@ -6,13 +6,10 @@ res://sprites/burst_animation.tres
 res://scenes/space-enviroment.tres
 res://weapons/rock-blaster.tres
 res://weapons/hands.tres
-res://scenes/main.tscn
-res://objects/platform_large_grass.tscn
+res://scenes/test_level.tscn
 res://objects/player.tscn
 res://objects/resource_bar.tscn
 res://objects/test_cube.tscn
-res://objects/impact.tscn
-res://objects/player.gd
 res://objects/enemy.tscn
-res://objects/platform.tscn
-res://objects/platform_extra_large_grass.tscn
+res://scenes/Base.tscn
+res://objects/platform_large_grass.tscn
